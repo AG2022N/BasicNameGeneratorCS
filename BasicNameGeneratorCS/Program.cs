@@ -1,13 +1,10 @@
 ﻿using System.Text;
 
-//These need to be in the debug folder/net7.0, during development, or the folder containing the executable on release
-string maleOutput = @"Output\\OutputMale.txt";
-string femaleOutput = @"Output\\OutputFemale.txt";
-
-int UserInput = 0;
-while (UserInput != 3)
+while (true)
 {
-    int maxGen, Counter = 0;
+    //These need to be in the debug folder/net7.0, during development, or the folder containing the executable on release
+    string maleOutput = @"Output\\OutputMale.txt", femaleOutput = @"Output\\OutputFemale.txt";
+    int UserInput = 0, MaxGen, Counter = 0;
     Console.Clear();
 
     Console.SetCursorPosition(0, 1);
@@ -26,10 +23,10 @@ while (UserInput != 3)
 
     Console.SetCursorPosition(5, 1);
     Console.Write("Type the number of names to generate: ");
-    maxGen = Convert.ToInt32(Console.ReadLine());
+    MaxGen = Convert.ToInt32(Console.ReadLine());
     Console.Clear();
 
-    while (UserInput == 1 && Counter != maxGen)
+    while (UserInput == 1 && Counter != MaxGen)
     {
         string randomName = BasicNameGeneratorCS.NameGenerator.GenerateNameMale();
         StreamWriter sw = new StreamWriter(maleOutput, true, Encoding.ASCII);
@@ -38,7 +35,7 @@ while (UserInput != 3)
         Console.WriteLine(randomName);
         Counter++;
     }
-    while (UserInput == 2 && Counter != maxGen)
+    while (UserInput == 2 && Counter != MaxGen)
     {
         string randomName = BasicNameGeneratorCS.NameGenerator.GenerateNameFemale();
         StreamWriter sw = new StreamWriter(femaleOutput, true, Encoding.ASCII);
