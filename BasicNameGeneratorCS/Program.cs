@@ -4,7 +4,7 @@ while (true)
 {
     //These need to be in the debug folder/net7.0, during development, or the folder containing the executable on release
     string maleOutput = @"Output\\OutputMale.txt", femaleOutput = @"Output\\OutputFemale.txt";
-    int UserInput = 0, MaxGen, Counter = 0;
+    int UserInput, MaxGen, Counter = 0;
     Console.Clear();
 
     Console.SetCursorPosition(0, 1);
@@ -29,18 +29,18 @@ while (true)
     while (UserInput == 1 && Counter != MaxGen)
     {
         string randomName = BasicNameGeneratorCS.NameGenerator.GenerateNameMale();
-        StreamWriter sw = new StreamWriter(maleOutput, true, Encoding.ASCII);
-        sw.WriteLine(randomName);
-        sw.Close();
+        var WriteToFile = new StreamWriter(maleOutput, true, Encoding.ASCII);
+        WriteToFile.WriteLine(randomName);
+        WriteToFile.Close();
         Console.WriteLine(randomName);
         Counter++;
     }
     while (UserInput == 2 && Counter != MaxGen)
     {
         string randomName = BasicNameGeneratorCS.NameGenerator.GenerateNameFemale();
-        StreamWriter sw = new StreamWriter(femaleOutput, true, Encoding.ASCII);
-        sw.WriteLine(randomName);
-        sw.Close();
+        var WriteToFile = new StreamWriter(femaleOutput, true, Encoding.ASCII);
+        WriteToFile.WriteLine(randomName);
+        WriteToFile.Close();
         Console.WriteLine(randomName);
         Counter++;
     }
