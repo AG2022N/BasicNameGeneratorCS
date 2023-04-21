@@ -32,7 +32,7 @@ while (true)
         var WriteToFile = new StreamWriter(maleOutput, true, Encoding.ASCII);
         WriteToFile.WriteLine(randomName);
         WriteToFile.Close();
-        Console.WriteLine(randomName);
+        Console.WriteLine("     " + randomName);
         Counter++;
     }
     while (UserInput == 2 && Counter != MaxGen)
@@ -41,7 +41,7 @@ while (true)
         var WriteToFile = new StreamWriter(femaleOutput, true, Encoding.ASCII);
         WriteToFile.WriteLine(randomName);
         WriteToFile.Close();
-        Console.WriteLine(randomName);
+        Console.WriteLine("     " + randomName);
         Counter++;
     }
     Console.ReadKey();
