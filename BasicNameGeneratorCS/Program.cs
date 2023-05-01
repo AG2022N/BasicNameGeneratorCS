@@ -10,39 +10,46 @@ while (true)
     Console.SetCursorPosition(0, 1);
     Console.Write("     Type '1' to generate male names\n" +
                   "     Type '2' to generate female names\n" +
-                  "     Type '3' to exit");
+                  "     Type any unlisted character to exit");
     Console.SetCursorPosition(5, 27);
     Console.Write("Choose: ");
-    UserInput = Convert.ToInt32(Console.ReadLine());
+    bool UserInputParse = Int32.TryParse(Console.ReadLine(), out UserInput);
     Console.Clear();
 
-    if (UserInput >= 3 || UserInput <= 0)
+    if (UserInput > 2 || UserInput <= 0)
     {
         Environment.Exit(0);
     }
 
     Console.SetCursorPosition(5, 1);
     Console.Write("Type the number of names to generate: ");
-    MaxGen = Convert.ToInt32(Console.ReadLine());
+    bool MaxGenParse = Int32.TryParse(Console.ReadLine(), out MaxGen);
     Console.Clear();
 
-    while (UserInput == 1 && Counter != MaxGen)
+    switch (UserInput)
     {
-        string randomName = BasicNameGeneratorCS.NameGenerator.GenerateNameMale();
-        var WriteToFile = new StreamWriter(maleOutput, true, Encoding.ASCII);
-        WriteToFile.WriteLine(randomName);
-        WriteToFile.Close();
-        Console.WriteLine("     " + randomName);
-        Counter++;
-    }
-    while (UserInput == 2 && Counter != MaxGen)
-    {
-        string randomName = BasicNameGeneratorCS.NameGenerator.GenerateNameFemale();
-        var WriteToFile = new StreamWriter(femaleOutput, true, Encoding.ASCII);
-        WriteToFile.WriteLine(randomName);
-        WriteToFile.Close();
-        Console.WriteLine("     " + randomName);
-        Counter++;
+        case 1:
+            while (Counter != MaxGen)
+            {
+                string randomName = BasicNameGeneratorCS.NameGenerator.GenerateNameMale();
+                var WriteToFile = new StreamWriter(maleOutput, true, Encoding.ASCII);
+                WriteToFile.WriteLine(randomName);
+                WriteToFile.Close();
+                Console.WriteLine("     " + randomName);
+                Counter++;
+            }
+            break;
+        case 2:
+            while (Counter != MaxGen)
+            {
+                string randomName = BasicNameGeneratorCS.NameGenerator.GenerateNameFemale();
+                var WriteToFile = new StreamWriter(femaleOutput, true, Encoding.ASCII);
+                WriteToFile.WriteLine(randomName);
+                WriteToFile.Close();
+                Console.WriteLine("     " + randomName);
+                Counter++;
+            }
+            break;
     }
     Console.ReadKey();
 }
