@@ -7,15 +7,38 @@ namespace BasicNameGeneratorCS
     {
         static void Main()
         {
+            string namesMalePath = @"NamesMale.txt";
+            string namesFemalePath = @"NamesFemale.txt";
+            string namesLastPath = @"NamesLast.txt";
+            if (!File.Exists(namesMalePath)) {
+                File.Create(namesMalePath).Close();
+                var WriteNamesMale = new StreamWriter(namesMalePath, true, Encoding.ASCII);
+                WriteNamesMale.Write("Name1\nName2\nName3\nName4\nName5");
+                WriteNamesMale.Close();
+            }
+            if (!File.Exists(namesFemalePath)) { 
+                File.Create(namesFemalePath).Close();
+                var WriteNamesFemale = new StreamWriter(namesFemalePath, true, Encoding.ASCII);
+                WriteNamesFemale.Write("Name1\nName2\nName3\nName4\nName5");
+                WriteNamesFemale.Close();
+            }
+            if (!File.Exists(namesLastPath)) { 
+                File.Create(namesLastPath).Close();
+                var WriteNamesLast = new StreamWriter(namesLastPath, true, Encoding.ASCII);
+                WriteNamesLast.Write("Name1\nName2\nName3\nName4\nName5");
+                WriteNamesLast.Close();
+            }
+            string maleOutput = @"OutputMale.txt";
+            string femaleOutput = @"OutputFemale.txt";
+            if (!File.Exists(maleOutput)) { File.Create(maleOutput).Close(); }
+            if (!File.Exists(femaleOutput)) { File.Create(femaleOutput).Close(); }
+
+            string[] namesMale = File.ReadAllLines(namesMalePath);
+            string[] namesFemale = File.ReadAllLines(namesFemalePath);
+            string[] namesLast = File.ReadAllLines(namesLastPath);
+
             while (true)
             {
-                string maleOutput = @"Output\\OutputMale.txt", femaleOutput = @"Output\\OutputFemale.txt";
-                string[] namesMale = File.ReadAllLines(@"Data\\NamesMale.txt");
-                string[] namesFemale = File.ReadAllLines(@"Data\\NamesFemale.txt");
-                string[] namesLast = File.ReadAllLines(@"Data\\LastNames.txt");
-                if (!File.Exists(maleOutput)) { File.Create(maleOutput).Close();}
-                if (!File.Exists(femaleOutput)) { File.Create(femaleOutput).Close();}
-
                 int UserInput, MaxGen, Counter = 0;
                 Console.Clear();
                 Console.SetCursorPosition(0, 1);
