@@ -7,6 +7,7 @@ namespace BasicNameGeneratorCS
     {
         static void Main()
         {
+            //Initialization Start
             string namesMalePath = @"NamesMale.txt";
             string namesFemalePath = @"NamesFemale.txt";
             string namesLastPath = @"NamesLast.txt";
@@ -36,6 +37,7 @@ namespace BasicNameGeneratorCS
             string[] namesMale = File.ReadAllLines(namesMalePath);
             string[] namesFemale = File.ReadAllLines(namesFemalePath);
             string[] namesLast = File.ReadAllLines(namesLastPath);
+            //Initialization End
 
             while (true)
             {
